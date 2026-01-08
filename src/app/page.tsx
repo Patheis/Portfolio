@@ -5,7 +5,6 @@ import { projects, Project } from '@/constants/projects';
 import { ArrowUpRight, PlayCircle, Image as ImageIcon, FileText, Linkedin, Mail, Github } from 'lucide-react';
 import Link from 'next/link';
 
-// Configuração de ferramentas com Slugs Oficiais para a API Simple Icons
 const allTools = [
   { name: 'Power BI', slug: 'powerbi', color: 'F2C811' },
   { name: 'Python', slug: 'python', color: '3776AB' },
@@ -17,7 +16,7 @@ const allTools = [
   { name: 'JavaScript', slug: 'javascript', color: 'F7DF1E' },
   { name: 'TypeScript', slug: 'typescript', color: '3178C6' },
   { name: 'HTML', slug: 'html5', color: 'E34F26' },
-  { name: 'CSS', slug: 'css', color: '1572B6' },
+  { name: 'CSS', slug: 'css', color: '1572B6' }, 
   { name: 'Figma', slug: 'figma', color: 'F24E1E' },
   { name: 'GitHub', slug: 'github', color: '181717' },
   { name: 'Gemini', slug: 'googlegemini', color: '8E75FF' },
@@ -28,7 +27,6 @@ export default function Home() {
   const [filter, setFilter] = useState('Todos');
   const categories = ['Todos', 'Acadêmico', 'Profissional', 'Soluções', 'Dashboard', 'Estudo de Caso'];
 
-  // Lógica de filtro: verifica se o filtro está incluso no array de categorias
   const filteredProjects = filter === 'Todos' 
     ? projects 
     : projects.filter(p => Array.isArray(p.category) && p.category.includes(filter));
@@ -66,30 +64,23 @@ export default function Home() {
 <section className="py-10 bg-white overflow-hidden border-b border-slate-100">
   <div className="flex whitespace-nowrap animate-scroll hover:[animation-play-state:paused]">
     {[...allTools, ...allTools, ...allTools].map((tool, i) => (
-      <div 
-        key={i} 
-        className="flex items-center gap-4 mx-12 grayscale hover:grayscale-0 transition-all duration-500 cursor-default group"
-      >
+      <div key={i} className="flex items-center gap-4 mx-12 grayscale hover:grayscale-0 transition-all duration-500 cursor-default group">
         <img 
           src={
             tool.slug === 'powerbi' 
-              ? "https://raw.githubusercontent.com/microsoft/PowerBI-Icons/main/SVG/Power%20BI.svg" 
+              ? "https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" 
               : tool.slug === 'css'
-                ? `https://cdn.simpleicons.org/css/${tool.color}`
+                ? "https://cdn.simpleicons.org/css/1572B6" 
                 : `https://cdn.simpleicons.org/${tool.slug}/${tool.color}`
           } 
           alt={tool.name} 
-          /* Aumentamos a opacidade no hover para a cor brilhar mais */
-          className="w-8 h-8 opacity-40 group-hover:opacity-100 transition-all duration-500 object-contain"
+          className="w-8 h-8 opacity-40 group-hover:opacity-100 transition-opacity object-contain"
           loading="lazy"
-          onError={(e) => {
-            if(tool.slug === 'powerbi') {
-              e.currentTarget.src = "https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg";
-            }
-          }}
         />
         
-        <span className="text-2xl font-display uppercase tracking-tighter text-slate-200 group-hover:text-slate-900 transition-colors">
+        <span className={`text-2xl font-display uppercase tracking-tighter transition-colors duration-500 
+          ${tool.slug === 'powerbi' ? 'group-hover:text-[#F2C811]' : 'group-hover:text-slate-900'} 
+          text-slate-200`}>
           {tool.name}
         </span>
       </div>
@@ -97,7 +88,7 @@ export default function Home() {
   </div>
 </section>
 
-      {/* FILTROS */}
+      {/* FILTROS E PROJETOS */}
       <section className="sticky top-0 z-50 bg-[#FDFCFB]/90 backdrop-blur-md border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-5 flex flex-wrap gap-6 items-center">
           <span className="text-[9px] uppercase tracking-widest font-bold text-slate-300">Filtrar</span>
@@ -106,9 +97,7 @@ export default function Home() {
               key={cat}
               onClick={() => setFilter(cat)}
               className={`text-xs uppercase tracking-wider transition-all px-3 py-1 rounded-full border ${
-                filter === cat 
-                ? 'bg-blue-600 text-white border-blue-600 font-bold shadow-sm' 
-                : 'text-slate-400 border-transparent hover:border-slate-200 hover:text-slate-900'
+                filter === cat ? 'bg-blue-600 text-white border-blue-600 font-bold' : 'text-slate-400 border-transparent hover:border-slate-200 hover:text-slate-900'
               }`}
             >
               {cat}
@@ -117,7 +106,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* LISTA DE PROJETOS */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-10">
         <AnimatePresence mode='popLayout'>
           {filteredProjects.map((project, index) => (
@@ -126,13 +114,8 @@ export default function Home() {
         </AnimatePresence>
       </section>
 
-      {/* FOOTER */}
       <footer className="px-6 md:px-12 py-16 border-t border-slate-200 bg-slate-50">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-          <div>
-            <h2 className="font-display text-4xl uppercase">Vamos conversar?</h2>
-            <p className="text-slate-500 font-serif italic text-lg">Pronto para novos desafios analíticos.</p>
-          </div>
           <div className="flex flex-wrap gap-8 text-lg font-medium">
             <SocialLink href="https://linkedin.com/in/joão-vitor-patheis-dos-santos" icon={<Linkedin size={20} />} label="LinkedIn" />
             <SocialLink href="mailto:joao.patheisds@gmail.com" icon={<Mail size={20} />} label="Email" />
@@ -164,44 +147,24 @@ function ProjectRow({ project, index }: { project: Project, index: number }) {
 
   return (
     <motion.div
-      layout
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.98 }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
+      layout initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.98 }} transition={{ duration: 0.4, delay: index * 0.05 }}
       className="group relative border-b border-slate-100 py-10 md:py-14 flex flex-col md:flex-row justify-between items-start md:items-center hover:bg-slate-50/50 px-4 transition-all duration-300 rounded-lg"
     >
-      {/* Preview Image no Hover */}
-      <div className="absolute right-[15%] top-1/2 -translate-y-1/2 w-72 h-44 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-500 scale-75 group-hover:scale-100 z-20 hidden md:block">
-         <img src={project.imageUrl || '/imagens/gestantes.png'} alt={project.title} className="w-full h-full object-cover rounded shadow-2xl border-4 border-white bg-white" />
-      </div>
-
       <div className="relative z-10 flex-1">
         <div className="flex flex-wrap items-center gap-2 mb-3">
-          {/* MAP CORRIGIDO: Agora trata category como Array com segurança */}
-          {Array.isArray(project.category) ? project.category.map((cat, i) => (
-            <span 
-              key={i} 
-              className={`text-[9px] font-mono border px-2 py-0.5 rounded uppercase font-bold transition-colors ${categoryStyles[cat] || 'bg-slate-50 text-slate-600'}`}
-            >
+          {Array.isArray(project.category) && project.category.map((cat, i) => (
+            <span key={i} className={`text-[9px] font-mono border px-2 py-0.5 rounded uppercase font-bold transition-colors ${categoryStyles[cat] || 'bg-slate-50 text-slate-600'}`}>
               {cat}
             </span>
-          )) : null}
-          
-          <div className="flex gap-2 text-slate-300 ml-1">
-             <PlayCircle size={14} className={project.videoUrl ? 'text-blue-400' : 'opacity-20'} />
-             <ImageIcon size={14} className={project.imageUrl ? 'text-blue-400' : 'opacity-20'} />
-             <FileText size={14} className={project.articleUrl ? 'text-blue-400' : 'opacity-20'} />
-          </div>
+          ))}
         </div>
-        
         <Link href={`/projeto/${project.id}`}>
           <h3 className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-tighter group-hover:italic group-hover:translate-x-4 transition-all duration-500 cursor-pointer">
             {project.title}
           </h3>
         </Link>
       </div>
-
       <div className="relative z-10 mt-6 md:mt-0">
         <Link href={`/projeto/${project.id}`}>
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-full border border-slate-200 group-hover:bg-blue-600 group-hover:text-white transition-all cursor-pointer">
