@@ -8,7 +8,7 @@ const nextConfig = {
   },
   // ATENÇÃO: Substitua 'NOME-DO-REPOSITORIO' pelo nome exato do seu projeto no GitHub
   // Exemplo: se o link for patheis.github.io/meu-projeto, use '/meu-projeto'
-  basePath: 'Portfolio', 
+  basePath: '/Portfolio', 
   
   // Opcional: Garante que os links de navegação e assets funcionem com a barra final
   trailingSlash: true,
