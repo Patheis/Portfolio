@@ -144,3 +144,10 @@ export default function DetalheProjeto() {
     </div>
   );
 }
+
+// Esta função diz ao Next quais IDs de projeto existem para gerar as páginas estáticas
+export async function generateStaticParams() {
+  return projects.map((project) => ({
+    id: project.id.toString(),
+  }));
+}
