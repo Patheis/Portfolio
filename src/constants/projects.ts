@@ -32,9 +32,9 @@ export const projects: Project[] = [
       'Acompanhamento centralizado e acessível via navegador.'
     ],
     results: 'Automação completa do cronograma gestacional, facilitando o suporte à decisão clínica para profissionais de saúde municipal.',
-    tools: ['React', 'Node.js', 'MySQL', 'Sequelize'],
-    imageUrl: '/imagens/gestantes.png', 
-    videoUrl: '/videos/gestantes.mp4', 
+    tools: ['React', 'Node.js', 'MySQL'],
+    imageUrl: '/Portfolio/imagens/gestantes.png', 
+    videoUrl: '/Portfolio/videos/gestantes.mp4', 
     articleUrl: 'https://www.linkedin.com/posts/jo%C3%A3o-vitor-patheis-dos-santos-922a3620b_saaeqde-gestantes-sus-activity-7341682020504199168-ZYx-',
     link: 'https://www.linkedin.com/posts/jo%C3%A3o-vitor-patheis-dos-santos-922a3620b_saaeqde-gestantes-sus-activity-7341682020504199168-ZYx-'
   },
