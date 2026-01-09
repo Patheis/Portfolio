@@ -60,35 +60,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CARROSSEL DE FERRAMENTAS - CICLO INFINITO */}
-<section className="py-10 bg-white overflow-hidden border-b border-slate-100">
-  <div className="flex whitespace-nowrap animate-scroll hover:[animation-play-state:paused]">
-    {[...allTools, ...allTools, ...allTools].map((tool, i) => (
-      <div key={i} className="flex items-center gap-4 mx-12 grayscale hover:grayscale-0 transition-all duration-500 cursor-default group">
-        <img 
-          src={
-            tool.slug === 'powerbi' 
-              ? "https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" 
-              : tool.slug === 'css'
-                ? "https://cdn.simpleicons.org/css/1572B6" 
-                : `https://cdn.simpleicons.org/${tool.slug}/${tool.color}`
-          } 
-          alt={tool.name} 
-          className="w-8 h-8 opacity-40 group-hover:opacity-100 transition-opacity object-contain"
-          loading="lazy"
-        />
-        
-        <span className={`text-2xl font-display uppercase tracking-tighter transition-colors duration-500 
-          ${tool.slug === 'powerbi' ? 'group-hover:text-[#F2C811]' : 'group-hover:text-slate-900'} 
-          text-slate-200`}>
-          {tool.name}
-        </span>
-      </div>
-    ))}
-  </div>
-</section>
+      {/* CARROSSEL DE FERRAMENTAS */}
+      <section className="py-10 bg-white overflow-hidden border-b border-slate-100">
+        <div className="flex whitespace-nowrap animate-scroll hover:[animation-play-state:paused]">
+          {[...allTools, ...allTools, ...allTools].map((tool, i) => (
+            <div key={i} className="flex items-center gap-4 mx-12 grayscale hover:grayscale-0 transition-all duration-500 cursor-default group">
+              <img 
+                src={tool.slug === 'powerbi' ? "https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" : `https://cdn.simpleicons.org/${tool.slug}/${tool.color}`} 
+                alt={tool.name} 
+                className="w-8 h-8 opacity-40 group-hover:opacity-100 transition-opacity object-contain"
+              />
+              <span className={`text-2xl font-display uppercase tracking-tighter transition-colors duration-500 text-slate-200 ${tool.slug === 'powerbi' ? 'group-hover:text-[#F2C811]' : 'group-hover:text-slate-900'}`}>
+                {tool.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
 
-      {/* FILTROS E PROJETOS */}
+      {/* FILTROS */}
       <section className="sticky top-0 z-50 bg-[#FDFCFB]/90 backdrop-blur-md border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-5 flex flex-wrap gap-6 items-center">
           <span className="text-[9px] uppercase tracking-widest font-bold text-slate-300">Filtrar</span>
@@ -106,6 +96,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* LISTA DE PROJETOS */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-10">
         <AnimatePresence mode='popLayout'>
           {filteredProjects.map((project, index) => (
@@ -114,12 +105,35 @@ export default function Home() {
         </AnimatePresence>
       </section>
 
-      <footer className="px-6 md:px-12 py-16 border-t border-slate-200 bg-slate-50">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex flex-wrap gap-8 text-lg font-medium">
-            <SocialLink href="https://linkedin.com/in/joão-vitor-patheis-dos-santos" icon={<Linkedin size={20} />} label="LinkedIn" />
-            <SocialLink href="mailto:joao.patheisds@gmail.com" icon={<Mail size={20} />} label="Email" />
-            <SocialLink href="https://github.com/Patheis" icon={<Github size={20} />} label="GitHub" />
+      {/* FOOTER INTEGRADO: VAMOS CONVERSAR + ICONES LINKADOS */}
+      <footer className="px-6 md:px-12 py-24 border-t border-slate-200 bg-white">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-end">
+          
+          {/* LADO ESQUERDO: TEXTO E ICONES */}
+          <div>
+            <h2 className="text-6xl md:text-8xl font-medium tracking-tighter uppercase mb-6 leading-none">
+              Vamos <br /> conversar?
+            </h2>
+            <p className="text-xl text-slate-500 font-serif italic mb-10 max-w-md">
+              Disponível para novos projetos e parcerias estratégicas.
+            </p>
+            
+            {/* LINKS SOCIAIS LADO A LADO - SEU DESIGN ORIGINAL */}
+            <div className="flex flex-wrap gap-8 text-lg font-medium">
+              <SocialLink href="https://linkedin.com/in/joão-vitor-patheis-dos-santos" icon={<Linkedin size={20} />} label="LinkedIn" />
+              <SocialLink href="mailto:joao.patheisds@gmail.com" icon={<Mail size={20} />} label="Email" />
+              <SocialLink href="https://github.com/Patheis" icon={<Github size={20} />} label="GitHub" />
+            </div>
+          </div>
+
+          {/* LADO DIREITO: CHAMADA DE E-MAIL */}
+          <div className="md:text-right">
+            <a 
+              href="mailto:joao.patheisds@gmail.com" 
+              className="inline-block text-xl font-bold uppercase tracking-tighter border-b-4 border-blue-600 pb-2 hover:text-blue-600 transition-colors"
+            >
+              Me envie um e-mail →
+            </a>
           </div>
         </div>
       </footer>
@@ -137,6 +151,9 @@ function SocialLink({ href, icon, label }: { href: string, icon: any, label: str
 }
 
 function ProjectRow({ project, index }: { project: Project, index: number }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
   const categoryStyles: { [key: string]: string } = {
     'Acadêmico': 'bg-blue-50 text-blue-600 border-blue-100',
     'Profissional': 'bg-red-50 text-red-600 border-red-100',
@@ -149,8 +166,31 @@ function ProjectRow({ project, index }: { project: Project, index: number }) {
     <motion.div
       layout initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.98 }} transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="group relative border-b border-slate-100 py-10 md:py-14 flex flex-col md:flex-row justify-between items-start md:items-center hover:bg-slate-50/50 px-4 transition-all duration-300 rounded-lg"
+      onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="group relative border-b border-slate-100 py-10 md:py-14 flex flex-col md:flex-row justify-between items-start md:items-center hover:bg-slate-50/10 px-4 transition-all duration-300"
     >
+      {/* IMAGEM NO HOVER - CORRIGIDA PARA FICAR SEMPRE POR CIMA (z-index alto e fixed) */}
+      <AnimatePresence>
+        {isHovered && project.imageUrl && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1, 
+              x: mousePos.x - 150, // Centraliza horizontalmente no mouse
+              y: mousePos.y - 280  // Aparece acima do mouse
+            }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            style={{ position: 'fixed', left: 0, top: 0 }}
+            className="pointer-events-none z-[100] hidden lg:block w-80 h-52 overflow-hidden rounded-xl shadow-2xl border-4 border-white"
+          >
+            <img src={project.imageUrl} alt="" className="w-full h-full object-cover" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="relative z-10 flex-1">
         <div className="flex flex-wrap items-center gap-2 mb-3">
           {Array.isArray(project.category) && project.category.map((cat, i) => (
@@ -159,16 +199,25 @@ function ProjectRow({ project, index }: { project: Project, index: number }) {
             </span>
           ))}
         </div>
+        
         <Link href={`/projeto/${project.id}`}>
-          <h3 className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-tighter group-hover:italic group-hover:translate-x-4 transition-all duration-500 cursor-pointer">
+          <h3 className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tighter group-hover:italic group-hover:translate-x-4 transition-all duration-500 cursor-pointer uppercase">
             {project.title}
           </h3>
         </Link>
+
+        {/* ÍCONES DE MÍDIA COLORIDOS */}
+        <div className="flex gap-4 mt-6">
+          <PlayCircle size={20} className={project.videoUrl ? "text-blue-600" : "text-slate-200"} />
+          <ImageIcon size={20} className={project.imageUrl ? "text-blue-600" : "text-slate-200"} />
+          <FileText size={20} className={project.articleUrl ? "text-blue-600" : "text-slate-200"} />
+        </div>
       </div>
+
       <div className="relative z-10 mt-6 md:mt-0">
         <Link href={`/projeto/${project.id}`}>
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full border border-slate-200 group-hover:bg-blue-600 group-hover:text-white transition-all cursor-pointer">
-            <ArrowUpRight size={22} />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full border border-slate-200 group-hover:bg-blue-600 group-hover:text-white transition-all cursor-pointer group-hover:rotate-45 duration-500">
+            <ArrowUpRight size={28} />
           </div>
         </Link>
       </div>
