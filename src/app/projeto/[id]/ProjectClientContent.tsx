@@ -5,12 +5,21 @@ import Link from "next/link";
 
 const techIcons: { [key: string]: string } = {
   'React': 'https://cdn.simpleicons.org/react/61DAFB',
+  'PHP': 'https://cdn.simpleicons.org/php',
+  'JavaScript': 'https://cdn.simpleicons.org/javascript',
   'Node.js': 'https://cdn.simpleicons.org/nodedotjs/339933',
   'MySQL': 'https://cdn.simpleicons.org/mysql/4479A1',
-  'Sequelize': 'https://cdn.simpleicons.org/sequelize/52B0E7',
   'Python': 'https://cdn.simpleicons.org/python/3776AB',
-  'Power BI': 'https://cdn.simpleicons.org/powerbi/F2C811', 
-  'SQL': 'https://cdn.simpleicons.org/sqlite/003B57' 
+  'Power BI': 'https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg', 
+  'Excel': 'https://img.icons8.com/?size=100&id=117561&format=png&color=000000', 
+  'SQL': 'https://cdn.simpleicons.org/sqlite/003B57', 
+  'Flask': 'https://cdn.simpleicons.org/flask/000000',
+  'Pandas': 'https://cdn.simpleicons.org/pandas/150458',
+  'HTML': 'https://cdn.simpleicons.org/html5/E34F26',
+  'CSS': 'https://cdn.simpleicons.org/css/1572B6', 
+  'Git': 'https://cdn.simpleicons.org/git/F05032',
+  'Java': 'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg'
+  
 };
 
 export default function ProjectClientContent({ projeto }: { projeto: any }) {

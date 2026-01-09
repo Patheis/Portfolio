@@ -7,12 +7,14 @@ import Link from 'next/link';
 
 const allTools = [
   { name: 'Power BI', slug: 'powerbi', color: 'F2C811' },
+  { name: 'Excel', slug: 'excel', color: 'F2C811' },
   { name: 'Python', slug: 'python', color: '3776AB' },
   { name: 'SQL', slug: 'sqlite', color: '003B57' },
   { name: 'React', slug: 'react', color: '61DAFB' },
   { name: 'Node.js', slug: 'nodedotjs', color: '339933' },
   { name: 'MySQL', slug: 'mysql', color: '4479A1' },
   { name: 'Git', slug: 'git', color: 'F05032' },
+  { name: 'Java', slug: 'java', color: 'F7DF1E' },
   { name: 'JavaScript', slug: 'javascript', color: 'F7DF1E' },
   { name: 'TypeScript', slug: 'typescript', color: '3178C6' },
   { name: 'HTML', slug: 'html5', color: 'E34F26' },
@@ -54,29 +56,40 @@ export default function Home() {
               "Transformando dados complexos em decisões de alto impacto estratégico."
             </p>
             <div className="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold border-t border-slate-200 pt-4">
-              Analista de Dados & BI <br /> Mococa, Sao Paulo
+              Futuro Analista de Dados & BI <br /> From Mococa, Sao Paulo
             </div>
           </div>
         </div>
       </section>
 
       {/* CARROSSEL DE FERRAMENTAS */}
-      <section className="py-10 bg-white overflow-hidden border-b border-slate-100">
-        <div className="flex whitespace-nowrap animate-scroll hover:[animation-play-state:paused]">
-          {[...allTools, ...allTools, ...allTools].map((tool, i) => (
-            <div key={i} className="flex items-center gap-4 mx-12 grayscale hover:grayscale-0 transition-all duration-500 cursor-default group">
-              <img 
-                src={tool.slug === 'powerbi' ? "https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" : `https://cdn.simpleicons.org/${tool.slug}/${tool.color}`} 
-                alt={tool.name} 
-                className="w-8 h-8 opacity-40 group-hover:opacity-100 transition-opacity object-contain"
-              />
-              <span className={`text-2xl font-display uppercase tracking-tighter transition-colors duration-500 text-slate-200 ${tool.slug === 'powerbi' ? 'group-hover:text-[#F2C811]' : 'group-hover:text-slate-900'}`}>
-                {tool.name}
-              </span>
-            </div>
-          ))}
-        </div>
-      </section>
+<section className="py-10 bg-white overflow-hidden border-b border-slate-100">
+  <div className="flex whitespace-nowrap animate-scroll hover:[animation-play-state:paused]">
+    {[...allTools, ...allTools, ...allTools].map((tool, i) => (
+      <div key={i} className="flex items-center gap-4 mx-12 grayscale hover:grayscale-0 transition-all duration-500 cursor-default group">
+        <img 
+          src={
+            tool.slug === 'powerbi' 
+              ? "https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" 
+              : tool.slug === 'java'
+                ? "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
+                : tool.slug === 'excel'
+                ? "https://img.icons8.com/?size=100&id=117561&format=png&color=000000"
+                : `https://cdn.simpleicons.org/${tool.slug}/${tool.color}`
+          } 
+          alt={tool.name} 
+          className="w-8 h-8 opacity-40 group-hover:opacity-100 transition-opacity object-contain"
+        />
+        <span className={`text-2xl font-display uppercase tracking-tighter transition-colors duration-500 text-slate-200 ${
+          tool.slug === 'powerbi' ? 'group-hover:text-[#F2C811]' : 
+          tool.slug === 'java' ? 'group-hover:text-[#ED8B00]' : 'group-hover:text-slate-900'
+        }`}>
+          {tool.name}
+        </span>
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* FILTROS */}
       <section className="sticky top-0 z-50 bg-[#FDFCFB]/90 backdrop-blur-md border-b border-slate-100">
@@ -110,15 +123,17 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-end">
           
           {/* LADO ESQUERDO: TEXTO E ICONES */}
-          <div>
-            <h2 className="text-6xl md:text-8xl font-medium tracking-tighter uppercase mb-6 leading-none">
-              Vamos <br /> conversar?
-            </h2>
-            <p className="text-xl text-slate-500 font-serif italic mb-10 max-w-md">
-              Disponível para novos projetos e parcerias estratégicas.
-            </p>
+          <div className="space-y-6">
+            <div className="space-y-2">
+              <h2 className="text-4xl md:text-5xl font-medium tracking-tighter uppercase leading-none text-slate-900">
+                Vamos <br /> conversar?
+              </h2>
+              <p className="text-base md:text-lg text-slate-500 font-serif italic max-w-sm">
+                Disponível para novos projetos e parcerias estratégicas.
+              </p>
+            </div>
             
-            {/* LINKS SOCIAIS LADO A LADO - SEU DESIGN ORIGINAL */}
+            {/* LINKS SOCIAIS LADO A LADO */}
             <div className="flex flex-wrap gap-8 text-lg font-medium">
               <SocialLink href="https://linkedin.com/in/joão-vitor-patheis-dos-santos" icon={<Linkedin size={20} />} label="LinkedIn" />
               <SocialLink href="mailto:joao.patheisds@gmail.com" icon={<Mail size={20} />} label="Email" />
@@ -127,10 +142,10 @@ export default function Home() {
           </div>
 
           {/* LADO DIREITO: CHAMADA DE E-MAIL */}
-          <div className="md:text-right">
+          <div className="md:text-right pb-1">
             <a 
               href="mailto:joao.patheisds@gmail.com" 
-              className="inline-block text-xl font-bold uppercase tracking-tighter border-b-4 border-blue-600 pb-2 hover:text-blue-600 transition-colors"
+              className="inline-block text-lg font-bold uppercase tracking-tighter border-b-2 border-blue-600 pb-1 hover:text-blue-600 transition-colors"
             >
               Me envie um e-mail →
             </a>
@@ -171,7 +186,7 @@ function ProjectRow({ project, index }: { project: Project, index: number }) {
       onMouseLeave={() => setIsHovered(false)}
       className="group relative border-b border-slate-100 py-10 md:py-14 flex flex-col md:flex-row justify-between items-start md:items-center hover:bg-slate-50/10 px-4 transition-all duration-300"
     >
-      {/* IMAGEM NO HOVER - CORRIGIDA PARA FICAR SEMPRE POR CIMA (z-index alto e fixed) */}
+      {/* IMAGEM NO HOVER - POSICIONAMENTO CORRIGIDO */}
       <AnimatePresence>
         {isHovered && project.imageUrl && (
           <motion.div
@@ -179,8 +194,8 @@ function ProjectRow({ project, index }: { project: Project, index: number }) {
             animate={{ 
               opacity: 1, 
               scale: 1, 
-              x: mousePos.x - 150, // Centraliza horizontalmente no mouse
-              y: mousePos.y - 280  // Aparece acima do mouse
+              x: mousePos.x - 150,
+              y: mousePos.y - 280 
             }}
             exit={{ opacity: 0, scale: 0.5 }}
             style={{ position: 'fixed', left: 0, top: 0 }}
@@ -201,7 +216,7 @@ function ProjectRow({ project, index }: { project: Project, index: number }) {
         </div>
         
         <Link href={`/projeto/${project.id}`}>
-          <h3 className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tighter group-hover:italic group-hover:translate-x-4 transition-all duration-500 cursor-pointer uppercase">
+          <h3 className="text-1xl md:text-1xl lg:text-4xl font-medium tracking-tighter group-hover:italic group-hover:translate-x-4 transition-all duration-500 cursor-pointer uppercase">
             {project.title}
           </h3>
         </Link>
