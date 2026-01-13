@@ -4,6 +4,52 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { projects, Project } from '@/constants/projects';
 import { ArrowUpRight, PlayCircle, Image as ImageIcon, FileText, Linkedin, Mail, Github } from 'lucide-react';
 import Link from 'next/link';
+import Script from 'next/script'; // Adicione esta linha
+
+// Estilizacao do botao da traducao
+const googleTranslateStyles = `
+  .goog-te-banner-frame.skiptranslate {
+    display: none !important;
+  }
+
+  body {
+    top: 0px !important;
+  }
+
+  /* Remove textos extras */
+  .goog-te-gadget span,
+  .goog-logo-link {
+    display: none !important;
+  }
+
+  .goog-te-gadget {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .goog-te-combo {
+      font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+
+  background: transparent !important;
+  border: none !important;
+  padding: 0 16px 0 0 !important;
+  margin: 0 !important;
+
+  cursor: pointer !important;
+  color: #2563eb !important;
+
+  appearance: none !important;
+  -webkit-appearance: none !important;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat !important;
+  background-position: right center !important;
+  }
+`;
+
+
 
 const allTools = [
   { name: 'Power BI', slug: 'powerbi', color: 'F2C811' },
@@ -35,7 +81,40 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#FDFCFB] text-[#1A1A1A] selection:bg-blue-100 overflow-x-hidden">
-      
+
+       <style>{googleTranslateStyles}</style>
+
+      {/* BOTÃO DE TRADUÇÃO */}
+      <div className="fixed top-6 right-6 z-[100] flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 backdrop-blur-md hover:border-blue-600 transition">
+      <span className="text-xs text-blue-600 font-semibold">
+             🌐 PT | EN
+      </span>
+
+        <div id="google_translate_element" className="flex items-center">
+          <Script id="google-translate-init" strategy="afterInteractive">
+            {`
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                  {
+                    pageLanguage: 'pt',
+                    includedLanguages: 'pt,en',
+                    layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+                    autoDisplay: false
+                  },
+                  'google_translate_element'
+                );
+              }
+            `}
+          </Script>
+
+          <Script
+            src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+            strategy="afterInteractive"
+          />
+        </div>
+      </div>
+
+        {/* ... seu código do botão de idioma se mantém aqui ... */}
       {/* HERO SECTION */}
       <section className="min-h-[70vh] flex flex-col justify-center px-6 md:px-12 border-b border-slate-200">
         <div className="max-w-7xl mx-auto w-full grid md:grid-cols-12 gap-12 mt-10">
@@ -51,15 +130,28 @@ export default function Home() {
               <span className="text-slate-400">Dos Santos</span>
             </motion.h1>
           </div>
+          
           <div className="md:col-span-4 flex flex-col justify-end pb-2 space-y-6">
             <p className="font-serif italic text-lg md:text-xl text-slate-500 leading-snug">
               "Transformando dados complexos em decisões de alto impacto estratégico."
             </p>
             <div className="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold border-t border-slate-200 pt-4">
-              Futuro Analista de Dados & BI <br /> From Mococa, Sao Paulo
+              Formado em Analise e Desenvolvimento de Sistemas <br /> From Mococa, Sao Paulo
             </div>
           </div>
+        
         </div>
+        {/* LOGO POSICIONADA NO CANTO SUPERIOR DIREITO DA HERO */}
+<div className="hidden lg:block absolute right-95 top-20">
+  <motion.img 
+    initial={{ opacity: 0, x: 20 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ delay: 0.5, duration: 1 }}
+    src="/Portfolio/imagens/logo.png" 
+    alt="Logo João Vitor" 
+    className="w-64 h-auto object-contain mix-blend-multiply opacity-80 hover:opacity-100 transition-all duration-700"
+  />
+</div>
       </section>
 
       {/* CARROSSEL DE FERRAMENTAS */}
