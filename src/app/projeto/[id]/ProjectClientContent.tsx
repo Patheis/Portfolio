@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowLeft, Play, BarChart3, Target, Lightbulb, ExternalLink } from "lucide-react";
+import { ArrowLeft, Play, BarChart3, Target, Lightbulb, ExternalLink, Database } from "lucide-react";
 import Link from "next/link";
 
 const techIcons: { [key: string]: string } = {
@@ -10,16 +10,16 @@ const techIcons: { [key: string]: string } = {
   'Node.js': 'https://cdn.simpleicons.org/nodedotjs/339933',
   'MySQL': 'https://cdn.simpleicons.org/mysql/4479A1',
   'Python': 'https://cdn.simpleicons.org/python/3776AB',
-  'Power BI': 'https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg', 
-  'Excel': 'https://img.icons8.com/?size=100&id=117561&format=png&color=000000', 
-  'SQL': 'https://cdn.simpleicons.org/sqlite/003B57', 
+  'Power BI': 'https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg',
+  'Excel': 'https://img.icons8.com/?size=100&id=117561&format=png&color=000000',
+  'SQL': 'https://cdn.simpleicons.org/sqlite/003B57',
   'Flask': 'https://cdn.simpleicons.org/flask/000000',
   'Pandas': 'https://cdn.simpleicons.org/pandas/150458',
   'HTML': 'https://cdn.simpleicons.org/html5/E34F26',
-  'CSS': 'https://cdn.simpleicons.org/css/1572B6', 
+  'CSS': 'https://cdn.simpleicons.org/css/1572B6',
   'Git': 'https://cdn.simpleicons.org/git/F05032',
   'Java': 'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg'
-  
+
 };
 
 export default function ProjectClientContent({ projeto }: { projeto: any }) {
@@ -60,24 +60,24 @@ export default function ProjectClientContent({ projeto }: { projeto: any }) {
         </motion.div>
 
         {projeto.videoUrl && (
-  <section className="mb-24">
-    <div className="flex items-center gap-2 mb-6 text-blue-600 font-bold uppercase text-xs tracking-[0.2em]">
-      <Play size={18} fill="currentColor" /> Demonstração Interativa
-    </div>
-    <div className="rounded-2xl overflow-hidden bg-black shadow-2xl aspect-video border-[8px] border-white">
-      <video 
-        controls 
-        muted 
-        playsInline 
-        className="w-full h-full object-cover"
-        key={projeto.videoUrl} // Adicionar a key força o vídeo a atualizar quando mudar de projeto
-      >
-        <source src={projeto.videoUrl} type="video/mp4" />
-        Seu navegador não suporta vídeos.
-      </video>
-    </div>
-  </section>
-)}
+          <section className="mb-24">
+            <div className="flex items-center gap-2 mb-6 text-blue-600 font-bold uppercase text-xs tracking-[0.2em]">
+              <Play size={18} fill="currentColor" /> Demonstração Interativa
+            </div>
+            <div className="rounded-2xl overflow-hidden bg-black shadow-2xl aspect-video border-[8px] border-white">
+              <video
+                controls
+                muted
+                playsInline
+                className="w-full h-full object-cover"
+                key={projeto.videoUrl} // Adicionar a key força o vídeo a atualizar quando mudar de projeto
+              >
+                <source src={projeto.videoUrl} type="video/mp4" />
+                Seu navegador não suporta vídeos.
+              </video>
+            </div>
+          </section>
+        )}
 
         <div className="border-t border-slate-200 pt-16 mb-20">
           <section className="mb-20">
@@ -90,23 +90,44 @@ export default function ProjectClientContent({ projeto }: { projeto: any }) {
                   </div>
                   <span className="text-xs font-bold uppercase tracking-tighter text-slate-400 group-hover:text-slate-900 transition-colors">{tool}</span>
                 </motion.div>
+
               ))}
+
             </div>
+
           </section>
+          {/* MODELAGEM DO BANCO DE DADOS - SÓ APARECE SE EXISTIR */}
+          {projeto.bd && (
+            <section className="mb-20">
+              <h3 className="flex items-center gap-2 font-bold uppercase tracking-widest text-slate-400 mb-4">
+                <Database size={14} /> Modelagem do Banco de Dados
+              </h3>
+              <div className="rounded-2xl overflow-hidden bg-white shadow-lg border border-slate-100">
+                <img
+                  src={projeto.bd}
+                  alt="Modelagem BD"
+                  className="max-w-full max-h-[600px] h-auto block object-contain"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).style.display = 'none'; // Esconde se o link ainda estiver quebrado
+                  }}
+                />
+              </div>
+            </section>
+          )}
 
           <div className="grid md:grid-cols-3 gap-16 border-t border-slate-100 pt-16">
             <div className="space-y-12 text-sm">
               <div>
-                <h3 className="flex items-center gap-2 font-bold uppercase tracking-widest text-slate-400 mb-4"><Target size={14}/> Problema</h3>
+                <h3 className="flex items-center gap-2 font-bold uppercase tracking-widest text-slate-400 mb-4"><Target size={14} /> Problema</h3>
                 <p className="text-slate-700 text-base leading-relaxed">{projeto.problem}</p>
               </div>
               <div>
-                <h3 className="flex items-center gap-2 font-bold uppercase tracking-widest text-slate-400 mb-4"><BarChart3 size={14}/> Resultado</h3>
+                <h3 className="flex items-center gap-2 font-bold uppercase tracking-widest text-slate-400 mb-4"><BarChart3 size={14} /> Resultado</h3>
                 <p className="text-blue-600 font-bold text-2xl tracking-tight leading-tight">{projeto.results}</p>
               </div>
             </div>
             <div className="md:col-span-2">
-              <h3 className="flex items-center gap-2 font-bold uppercase tracking-widest text-slate-400 mb-8 text-xs"><Lightbulb size={16}/> Insights Estratégicos</h3>
+              <h3 className="flex items-center gap-2 font-bold uppercase tracking-widest text-slate-400 mb-8 text-xs"><Lightbulb size={16} /> Insights Estratégicos</h3>
               <div className="grid gap-6">
                 {projeto.insights.map((insight: any, i: number) => (
                   <motion.div key={i} whileHover={{ x: 10 }} className="p-6 bg-white border border-slate-100 rounded-xl shadow-sm border-l-4 border-l-blue-600 transition-all">

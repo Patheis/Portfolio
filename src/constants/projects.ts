@@ -12,6 +12,7 @@ export interface Project {
   videoUrl?: string;
   articleUrl?: string; // CAMPO ADICIONADO AQUI
   link?: string;
+  bd?: string;
 }
 
 export const projects: Project[] = [
@@ -36,7 +37,8 @@ export const projects: Project[] = [
     imageUrl: '/Portfolio/imagens/gestantes.png', 
     videoUrl: '/Portfolio/videos/gestantes.mp4', 
     articleUrl: 'https://www.linkedin.com/posts/jo%C3%A3o-vitor-patheis-dos-santos-922a3620b_saaeqde-gestantes-sus-activity-7341682020504199168-ZYx-',
-    link: 'https://www.linkedin.com/posts/jo%C3%A3o-vitor-patheis-dos-santos-922a3620b_saaeqde-gestantes-sus-activity-7341682020504199168-ZYx-'
+    link: 'https://www.linkedin.com/posts/jo%C3%A3o-vitor-patheis-dos-santos-922a3620b_saaeqde-gestantes-sus-activity-7341682020504199168-ZYx-',
+    bd:'/Portfolio/bd/gestantes.png'
   },
   {
   id: 'automacao-nfe-xml-python',
@@ -56,12 +58,12 @@ export const projects: Project[] = [
     'A manipulação de XML abriu caminho para futuras integrações automáticas com ERPs.'
   ],
   results: 'Eliminação total do trabalho manual de digitação de NF-e, garantindo integridade dos dados para análises financeiras futuras.',
-  // ADICIONADO HTML E CSS PARA OS ÍCONES ACENDEREM
   tools: ['Python', 'Flask', 'MySQL', 'Pandas', 'HTML', 'CSS', 'Git'], 
   imageUrl: '/Portfolio/imagens/automacao-xml.png', 
   videoUrl: '/Portfolio/videos/automacao-xml.mp4', 
   articleUrl: 'https://www.linkedin.com/posts/jo%C3%A3o-vitor-patheis-dos-santos-922a3620b_python-flask-mysql-activity-7292381469392433152-13ZN',
-  link: 'https://www.linkedin.com/posts/jo%C3%A3o-vitor-patheis-dos-santos-922a3620b_python-flask-mysql-activity-7292381469392433152-13ZN'
+  link: 'https://www.linkedin.com/posts/jo%C3%A3o-vitor-patheis-dos-santos-922a3620b_python-flask-mysql-activity-7292381469392433152-13ZN',
+  bd:'/Portfolio/bd/importa.png'
 },
 
 {
@@ -138,7 +140,8 @@ export const projects: Project[] = [
   imageUrl: '/Portfolio/imagens/tcc-hospitalar.png', 
   videoUrl: '/Portfolio/videos/tcc-hospitalar.mp4', 
   articleUrl: 'https://www.linkedin.com/posts/jo%C3%A3o-vitor-patheis-dos-santos-922a3620b_%C3%A9-com-muito-orgulho-que-apresento-meu-trabalho-activity-7279615953418567681-cvVN',
-  link: 'https://www.linkedin.com/posts/jo%C3%A3o-vitor-patheis-dos-santos-922a3620b_%C3%A9-com-muito-orgulho-que-apresento-meu-trabalho-activity-7279615953418567681-cvVN'
+  link: 'https://www.linkedin.com/posts/jo%C3%A3o-vitor-patheis-dos-santos-922a3620b_%C3%A9-com-muito-orgulho-que-apresento-meu-trabalho-activity-7279615953418567681-cvVN',
+  bd:'/Portfolio/bd/tcc.png'
 },
 
 {
