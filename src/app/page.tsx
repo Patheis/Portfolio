@@ -227,7 +227,7 @@ export default function Home() {
             
             {/* LINKS SOCIAIS LADO A LADO */}
             <div className="flex flex-wrap gap-8 text-lg font-medium">
-              <SocialLink href="https://linkedin.com/in/joão-vitor-patheis-dos-santos" icon={<Linkedin size={20} />} label="LinkedIn" />
+              <SocialLink href="https://www.linkedin.com/in/jo%C3%A3o-vitor-patheis-dos-santos-922a3620b/" icon={<Linkedin size={20} />} label="LinkedIn" />
               <SocialLink href="mailto:joao.patheisds@gmail.com" icon={<Mail size={20} />} label="Email" />
               <SocialLink href="https://github.com/Patheis" icon={<Github size={20} />} label="GitHub" />
             </div>
