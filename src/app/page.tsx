@@ -64,31 +64,31 @@ const allTools = [
   { name: 'JavaScript', slug: 'javascript', color: 'F7DF1E' },
   { name: 'TypeScript', slug: 'typescript', color: '3178C6' },
   { name: 'HTML', slug: 'html5', color: 'E34F26' },
-  { name: 'CSS', slug: 'css', color: '1572B6' }, 
-  { name: 'Figma', slug: 'figma', color: 'F24E1E' },
+  { name: 'CSS', slug: 'css', color: '1572B6' },
   { name: 'GitHub', slug: 'github', color: '181717' },
   { name: 'Gemini', slug: 'googlegemini', color: '8E75FF' },
-  { name: 'Google AI Studio', slug: 'googlecloud', color: '4285F4' }
+  { name: 'Next.js', slug: 'nextdotjs', color: '000000' },
+  { name: 'Vercel', slug: 'vercel', color: '000000' }
 ];
 
 export default function Home() {
   const [filter, setFilter] = useState('Todos');
   const categories = ['Todos', 'Acadêmico', 'Profissional', 'Soluções', 'Dashboard', 'Estudo de Caso'];
 
-  const filteredProjects = filter === 'Todos' 
-    ? projects 
+  const filteredProjects = filter === 'Todos'
+    ? projects
     : projects.filter(p => Array.isArray(p.category) && p.category.includes(filter));
 
   return (
     <main className="min-h-screen bg-[#FDFCFB] text-[#1A1A1A] selection:bg-blue-100 overflow-x-hidden">
 
-       <style>{googleTranslateStyles}</style>
+      <style>{googleTranslateStyles}</style>
 
       {/* BOTÃO DE TRADUÇÃO */}
       <div className="fixed top-6 right-6 z-[100] flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 backdrop-blur-md hover:border-blue-600 transition">
-      <span className="text-xs text-blue-600 font-semibold">
-             🌐 PT | EN
-      </span>
+        <span className="text-xs text-blue-600 font-semibold">
+          🌐 PT | EN
+        </span>
 
         <div id="google_translate_element" className="flex items-center">
           <Script id="google-translate-init" strategy="afterInteractive">
@@ -114,12 +114,14 @@ export default function Home() {
         </div>
       </div>
 
-        {/* ... seu código do botão de idioma se mantém aqui ... */}
+      {/* ... seu código do botão de idioma se mantém aqui ... */}
       {/* HERO SECTION */}
-      <section className="min-h-[70vh] flex flex-col justify-center px-6 md:px-12 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto w-full grid md:grid-cols-12 gap-12 mt-10">
-          <div className="md:col-span-8">
-            <motion.h1 
+      <section className="min-h-[70vh] flex flex-col justify-center px-6 md:px-12 border-b border-slate-200 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto w-full grid md:grid-cols-12 gap-8 mt-10 items-center">
+
+          {/* COLUNA DO NOME (ESQUERDA) */}
+          <div className="md:col-span-7 lg:col-span-8">
+            <motion.h1
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
@@ -130,58 +132,60 @@ export default function Home() {
               <span className="text-slate-400">Dos Santos</span>
             </motion.h1>
           </div>
-          
-          <div className="md:col-span-4 flex flex-col justify-end pb-2 space-y-6">
-            <p className="font-serif italic text-lg md:text-xl text-slate-500 leading-snug">
-              "Transformando dados complexos em decisões de alto impacto estratégico."
-            </p>
-            <div className="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold border-t border-slate-200 pt-4">
-              Formado em Analise e Desenvolvimento de Sistemas <br /> From Mococa, Sao Paulo
+
+          {/* COLUNA DA LOGO + DESCRIÇÃO (DIREITA) */}
+          <div className="md:col-span-5 lg:col-span-4 flex flex-col items-center md:items-end justify-center space-y-8">
+
+            {/* LOGO AGORA DENTRO DO GRID E RESPONSIVA */}
+            <motion.img
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5, duration: 1 }}
+              src="/Portfolio/imagens/logo.png"
+              alt="Logo João Vitor"
+              className="w-40 md:w-56 lg:w-64 h-auto object-contain mix-blend-multiply opacity-80 hover:opacity-100 transition-all duration-700"
+            />
+
+            <div className="text-center md:text-right space-y-4">
+              <p className="font-serif italic text-lg md:text-xl text-slate-500 leading-snug">
+                "Transformando dados complexos em decisões de alto impacto estratégico."
+              </p>
+              <div className="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold border-t border-slate-200 pt-4">
+                Tecnólogo em Analise e Desenvolvimento de Sistemas <br /> From Mococa, SP 
+              </div>
             </div>
+            <br />
           </div>
-        
         </div>
-        {/* LOGO POSICIONADA NO CANTO SUPERIOR DIREITO DA HERO */}
-<div className="hidden lg:block absolute right-95 top-20">
-  <motion.img 
-    initial={{ opacity: 0, x: 20 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ delay: 0.5, duration: 1 }}
-    src="/Portfolio/imagens/logo.png" 
-    alt="Logo João Vitor" 
-    className="w-64 h-auto object-contain mix-blend-multiply opacity-80 hover:opacity-100 transition-all duration-700"
-  />
-</div>
       </section>
 
       {/* CARROSSEL DE FERRAMENTAS */}
-<section className="py-10 bg-white overflow-hidden border-b border-slate-100">
-  <div className="flex whitespace-nowrap animate-scroll hover:[animation-play-state:paused]">
-    {[...allTools, ...allTools, ...allTools].map((tool, i) => (
-      <div key={i} className="flex items-center gap-4 mx-12 grayscale hover:grayscale-0 transition-all duration-500 cursor-default group">
-        <img 
-          src={
-            tool.slug === 'powerbi' 
-              ? "https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" 
-              : tool.slug === 'java'
-                ? "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
-                : tool.slug === 'excel'
-                ? "https://img.icons8.com/?size=100&id=117561&format=png&color=000000"
-                : `https://cdn.simpleicons.org/${tool.slug}/${tool.color}`
-          } 
-          alt={tool.name} 
-          className="w-8 h-8 opacity-40 group-hover:opacity-100 transition-opacity object-contain"
-        />
-        <span className={`text-2xl font-display uppercase tracking-tighter transition-colors duration-500 text-slate-200 ${
-          tool.slug === 'powerbi' ? 'group-hover:text-[#F2C811]' : 
-          tool.slug === 'java' ? 'group-hover:text-[#ED8B00]' : 'group-hover:text-slate-900'
-        }`}>
-          {tool.name}
-        </span>
-      </div>
-    ))}
-  </div>
-</section>
+      <section className="py-10 bg-white overflow-hidden border-b border-slate-100">
+        <div className="flex whitespace-nowrap animate-scroll hover:[animation-play-state:paused]">
+          {[...allTools, ...allTools, ...allTools].map((tool, i) => (
+            <div key={i} className="flex items-center gap-4 mx-12 grayscale hover:grayscale-0 transition-all duration-500 cursor-default group">
+              <img
+                src={
+                  tool.slug === 'powerbi'
+                    ? "https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg"
+                    : tool.slug === 'java'
+                      ? "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
+                      : tool.slug === 'excel'
+                        ? "https://img.icons8.com/?size=100&id=117561&format=png&color=000000"
+                        : `https://cdn.simpleicons.org/${tool.slug}/${tool.color}`
+                }
+                alt={tool.name}
+                className="w-8 h-8 opacity-40 group-hover:opacity-100 transition-opacity object-contain"
+              />
+              <span className={`text-2xl font-display uppercase tracking-tighter transition-colors duration-500 text-slate-200 ${tool.slug === 'powerbi' ? 'group-hover:text-[#F2C811]' :
+                tool.slug === 'java' ? 'group-hover:text-[#ED8B00]' : 'group-hover:text-slate-900'
+                }`}>
+                {tool.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* FILTROS */}
       <section className="sticky top-0 z-50 bg-[#FDFCFB]/90 backdrop-blur-md border-b border-slate-100">
@@ -191,9 +195,8 @@ export default function Home() {
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`text-xs uppercase tracking-wider transition-all px-3 py-1 rounded-full border ${
-                filter === cat ? 'bg-blue-600 text-white border-blue-600 font-bold' : 'text-slate-400 border-transparent hover:border-slate-200 hover:text-slate-900'
-              }`}
+              className={`text-xs uppercase tracking-wider transition-all px-3 py-1 rounded-full border ${filter === cat ? 'bg-blue-600 text-white border-blue-600 font-bold' : 'text-slate-400 border-transparent hover:border-slate-200 hover:text-slate-900'
+                }`}
             >
               {cat}
             </button>
@@ -213,7 +216,7 @@ export default function Home() {
       {/* FOOTER INTEGRADO: VAMOS CONVERSAR + ICONES LINKADOS */}
       <footer className="px-6 md:px-12 py-24 border-t border-slate-200 bg-white">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-end">
-          
+
           {/* LADO ESQUERDO: TEXTO E ICONES */}
           <div className="space-y-6">
             <div className="space-y-2">
@@ -224,7 +227,7 @@ export default function Home() {
                 Disponível para novos projetos e parcerias estratégicas.
               </p>
             </div>
-            
+
             {/* LINKS SOCIAIS LADO A LADO */}
             <div className="flex flex-wrap gap-8 text-lg font-medium">
               <SocialLink href="https://www.linkedin.com/in/jo%C3%A3o-vitor-patheis-dos-santos-922a3620b/" icon={<Linkedin size={20} />} label="LinkedIn" />
@@ -235,8 +238,8 @@ export default function Home() {
 
           {/* LADO DIREITO: CHAMADA DE E-MAIL */}
           <div className="md:text-right pb-1">
-            <a 
-              href="mailto:joao.patheisds@gmail.com" 
+            <a
+              href="mailto:joao.patheisds@gmail.com"
               className="inline-block text-lg font-bold uppercase tracking-tighter border-b-2 border-blue-600 pb-1 hover:text-blue-600 transition-colors"
             >
               Me envie um e-mail →
@@ -283,11 +286,11 @@ function ProjectRow({ project, index }: { project: Project, index: number }) {
         {isHovered && project.imageUrl && (
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ 
-              opacity: 1, 
-              scale: 1, 
+            animate={{
+              opacity: 1,
+              scale: 1,
               x: mousePos.x - 150,
-              y: mousePos.y - 280 
+              y: mousePos.y - 280
             }}
             exit={{ opacity: 0, scale: 0.5 }}
             style={{ position: 'fixed', left: 0, top: 0 }}
@@ -306,7 +309,7 @@ function ProjectRow({ project, index }: { project: Project, index: number }) {
             </span>
           ))}
         </div>
-        
+
         <Link href={`/projeto/${project.id}`}>
           <h3 className="text-1xl md:text-1xl lg:text-4xl font-medium tracking-tighter group-hover:italic group-hover:translate-x-4 transition-all duration-500 cursor-pointer uppercase">
             {project.title}

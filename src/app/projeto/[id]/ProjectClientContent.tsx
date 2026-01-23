@@ -18,7 +18,10 @@ const techIcons: { [key: string]: string } = {
   'HTML': 'https://cdn.simpleicons.org/html5/E34F26',
   'CSS': 'https://cdn.simpleicons.org/css/1572B6',
   'Git': 'https://cdn.simpleicons.org/git/F05032',
-  'Java': 'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg'
+  'Java': 'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg',
+  'GitHub': 'https://cdn.simpleicons.org/github/181717',
+  'Vercel': 'https://cdn.simpleicons.org/vercel/000000',
+  'Next.js': 'https://cdn.simpleicons.org/nextdotjs/000000'
 
 };
 
@@ -38,7 +41,7 @@ export default function ProjectClientContent({ projeto }: { projeto: any }) {
           <ArrowLeft size={16} /> Voltar
         </Link>
         {projeto.link && (
-          <a href={projeto.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-blue-600 transition-colors">
+          <a href={projeto.articleUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-blue-600 transition-colors">
             Ver no LinkedIn <ExternalLink size={14} />
           </a>
         )}
@@ -57,6 +60,27 @@ export default function ProjectClientContent({ projeto }: { projeto: any }) {
           <p className="text-xl md:text-2xl font-serif italic text-slate-500 mb-16 max-w-3xl leading-relaxed">
             "{projeto.shortDescription}"
           </p>
+          {/* CONDIÇÃO PARA PROJETOS COM DOMÍNIO ESPECÍFICO - AGORA CENTRALIZADO */}
+          {projeto.link && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="mb-16 flex justify-center w-full" // flex e justify-center garantem a centralização
+            >
+              <a
+                href={projeto.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 text-white rounded-full font-bold uppercase text-xs tracking-[0.2em] hover:bg-blue-700 transition-all shadow-xl shadow-blue-100 group"
+              >
+                <div className="w-6 h-6 flex items-center justify-center bg-white/20 rounded-full">
+                  <ExternalLink size={14} className="group-hover:rotate-45 transition-transform" />
+                </div>
+                <span>Acessar Site Oficial: {new URL(projeto.link).hostname}</span>
+              </a>
+            </motion.div>
+          )}
         </motion.div>
 
         {projeto.videoUrl && (
