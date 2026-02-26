@@ -17,6 +17,36 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'site-4u',
+    title: '4U LANGUAGE SCHOOL',
+    category: ['Profissional', 'Soluções'],
+    shortDescription: 'Desenvolvimento e deploy do site oficial da 4U Language School (Mococa/SP), com foco em autoridade digital, captação de leads e experiência moderna — incluindo teste de nível, integrações e automações.',
+    problem: 'Necessidade de presença digital para reforçar a credibilidade e ampliar o alcance dos serviços prestados pela escola. Além disso, criar um funil de aquisição com teste de nível, captura de contatos e comunicação automatizada, reduzindo atrito na entrada de novos alunos e preparando a base para cursos e campanhas específicas. ',
+    methodology: [
+      'Desenvolvimento de interface moderna e responsiva, focada em autoridade, confiança e conversão',
+      'Arquitetura com Next.js + TypeScript para garantir performance, escalabilidade e consistência',
+      'Implementação de SSL/HTTPS e boas práticas de segurança (proteção de variáveis de ambiente e fluxos sensíveis)',
+      'Configuração de pipeline CI/CD com deploy automatizado (GitHub → Vercel)',
+      'Implementação e evolução contínua do funil de leads: CTA estratégicos, formulários e rotas dedicadas',
+      'Integração com Supabase para persistência de dados e estrutura de autenticação/roles quando necessário',
+      'Integração com Resend para envio de e-mails transacionais e automações (ex.: após o teste de nível)',
+      'Otimização de SEO local (Mococa e região) e estrutura preparada para conteúdos e páginas futuras',
+      'Tratamento de UX com microinterações/animações (Framer Motion) para reduzir fricção e melhorar retenção'
+    ],
+    insights: [
+      'A presença digital transforma uma marca local em autoridade acessível 24h, aumentando confiança e previsibilidade na captação de alunos.',
+      'O teste de nível funciona como um “produto de entrada”: além de qualificar o lead, entrega valor imediato e aumenta a taxa de conversão.',
+      'Automação de deploy e integrações (banco + e-mail) reduzem manutenção e criam base para evolução contínua sem retrabalho.',
+      'Segurança e governança (ex.: variáveis, regras de acesso/validação, prevenção de envios inválidos) elevam o nível do projeto mesmo sendo “um site”.'
+    ],
+    results: 'Site 100% em produção, seguro e funcional, servindo como principal ponto de contato digital. Implementação de funil de aquisição com teste de nível e captura de leads, além de integrações para armazenar dados e disparar comunicações automáticas. Base preparada para expansão (novos cursos/páginas/campanhas) com manutenção simples via CI/CD.',
+    tools: ['React', 'Next.js', 'CSS', 'GitHub', 'Vercel', 'MySQL', 'TypeScript', 'Excel', 'Supabase', 'Resend'],
+    imageUrl: '/Portfolio/imagens/site-4U.png',
+    videoUrl: '/Portfolio/videos/site-4U.mp4',
+    articleUrl: 'https://www.linkedin.com/posts/jo%C3%A3o-vitor-patheis-dos-santos_fullstack-nextjs-supabase-activity-7427329661090734080-5yKQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADVeSKoBPltjDSXEtgem-hrcUjTXrLoMoGQ',
+    link: 'https://www.4ulanguageschool.com.br/'
+  },
+  {
     id: 'site-senebra',
     title: 'Escritório Contábil Senebra',
     category: ['Soluções', 'Profissional'],
@@ -221,4 +251,5 @@ export const projects: Project[] = [
     articleUrl: 'https://www.linkedin.com/posts/jo%C3%A3o-vitor-patheis-dos-santos-922a3620b_seguranaexadainformaaexaeto-php-javascript-activity-7257940046421368832-PHp_',
     link: 'https://github.com/Patheis/Login_Seguro'
   },
+
 ];

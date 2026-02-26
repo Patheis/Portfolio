@@ -21,8 +21,10 @@ const techIcons: { [key: string]: string } = {
   'Java': 'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg',
   'GitHub': 'https://cdn.simpleicons.org/github/181717',
   'Vercel': 'https://cdn.simpleicons.org/vercel/000000',
-  'Next.js': 'https://cdn.simpleicons.org/nextdotjs/000000'
-
+  'Next.js': 'https://cdn.simpleicons.org/nextdotjs/000000',
+  'Supabase': 'https://cdn.simpleicons.org/supabase/3ECF8E',
+  'TypeScript': 'https://cdn.simpleicons.org/typescript/3178C6',
+  'Resend': 'https://cdn.simpleicons.org/resend/000000'
 };
 
 export default function ProjectClientContent({ projeto }: { projeto: any }) {

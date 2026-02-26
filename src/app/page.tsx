@@ -68,7 +68,9 @@ const allTools = [
   { name: 'GitHub', slug: 'github', color: '181717' },
   { name: 'Gemini', slug: 'googlegemini', color: '8E75FF' },
   { name: 'Next.js', slug: 'nextdotjs', color: '000000' },
-  { name: 'Vercel', slug: 'vercel', color: '000000' }
+  { name: 'Vercel', slug: 'vercel', color: '000000' },
+  { name: 'Supabase', slug: 'supabase', color: '3ECF8E' },
+  { name: 'Resend', slug: 'resend', color: '000000' },
 ];
 
 export default function Home() {
@@ -151,7 +153,7 @@ export default function Home() {
                 "Transformando dados complexos em decisões de alto impacto estratégico."
               </p>
               <div className="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold border-t border-slate-200 pt-4">
-                Tecnólogo em Analise e Desenvolvimento de Sistemas <br /> From Mococa, SP 
+                Tecnólogo em Analise e Desenvolvimento de Sistemas <br /> From Mococa, SP
               </div>
             </div>
             <br />
