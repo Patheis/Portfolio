@@ -41,8 +41,8 @@ export const projects: Project[] = [
     ],
     results: 'Site 100% em produção, seguro e funcional, servindo como principal ponto de contato digital. Implementação de funil de aquisição com teste de nível e captura de leads, além de integrações para armazenar dados e disparar comunicações automáticas. Base preparada para expansão (novos cursos/páginas/campanhas) com manutenção simples via CI/CD.',
     tools: ['React', 'Next.js', 'CSS', 'GitHub', 'Vercel', 'MySQL', 'TypeScript', 'Excel', 'Supabase', 'Resend'],
-    imageUrl: '/Portfolio/imagens/site-4U.png',
-    videoUrl: '/Portfolio/videos/site-4U.mp4',
+    imageUrl: '/Portfolio/imagens/site-4u.png',
+    videoUrl: '/Portfolio/videos/site-4u.mp4',
     articleUrl: 'https://www.linkedin.com/posts/jo%C3%A3o-vitor-patheis-dos-santos_fullstack-nextjs-supabase-activity-7427329661090734080-5yKQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADVeSKoBPltjDSXEtgem-hrcUjTXrLoMoGQ',
     link: 'https://www.4ulanguageschool.com.br/'
   },
