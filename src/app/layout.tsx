@@ -12,8 +12,8 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "João Vitor Patheis | Analista de Dados",
-  description: "Portfólio de análise de dados e insights estratégicos desenvolvido em Next.js",
+  title: "João Vitor Patheis ",
+  description: "Portfólio de projetos e insights estratégicos desenvolvido em Next.js",
 };
 
 export default function RootLayout({
